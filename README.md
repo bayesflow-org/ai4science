@@ -16,20 +16,27 @@ You can also download the repository as a ZIP, extract it, and run the last two 
 
 For VS Code, select `.venv` as the notebook's Python environment. I recommend installing the UV extension too.
 
+For the HNN NLE notebook, install PyMC and ArviZ with `uv sync --extra nle`. Both HNN notebooks use the included offline simulations; regenerating them requires Linux, macOS, or WSL, a C/C++ compiler, and `uv sync --extra hnn`.
+
 ## Repository contents
 
 ```text
 ai4science/
 ├── pyproject.toml                 # Dependencies, packaging, and code checks
 ├── uv.lock                        # Resolved dependency versions
-├── tutorials/
-│   ├── diffusion-models.ipynb      # Diffusion-based posterior inference
-│   └── helpers/
-│       └── kinematics.py          # Robot-arm simulation and plotting
-└── tests/                         # Helper regression tests
+└── tutorials/
+    ├── diffusion-models.ipynb      # Diffusion-based posterior inference
+    ├── hnn-npe.ipynb               # HNN posterior estimation and diagnostics
+    ├── hnn-nle.ipynb               # HNN likelihood estimation with PyMC
+    ├── data/hnn-evoked.npz         # Offline HNN simulations
+    └── helpers/
+        ├── hnn.py                 # HNN simulation, data loading, and plotting
+        └── kinematics.py          # Robot-arm simulation and plotting
 ```
 
-The tutorial infers the height and three angles of a planar robot arm from its endpoint. Several configurations can produce the same endpoint, giving an example of a multimodal posterior. It covers simulation, offline training, posterior sampling, coverage checks, and inference-time guidance. Training time depends on hardware and compilation overhead.
+The [diffusion tutorial](tutorials/diffusion-models.ipynb) infers the height and three angles of a planar robot arm from its endpoint. Several configurations can produce the same endpoint, giving an example of a multimodal posterior. It covers simulation, offline training, posterior sampling, coverage checks, and inference-time guidance. Training time depends on hardware and compilation overhead.
+
+The [HNN NPE tutorial](tutorials/hnn-npe.ipynb) estimates proximal-input timing and pyramidal AMPA weight from simulated cortical dipole waveforms, then checks held-out recovery and calibration with BayesFlow diagnostics. The [HNN NLE tutorial](tutorials/hnn-nle.ipynb) learns a likelihood from the same data and uses BayesFlow's `NeuralDistribution` with PyMC to inspect the posterior against ground truth for one held-out waveform.
 
 ## What is simulation-based inference?
 
