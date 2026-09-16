@@ -28,6 +28,7 @@ ai4science/
     ├── diffusion-models.ipynb      # Diffusion-based posterior inference
     ├── hnn-npe.ipynb               # HNN posterior estimation and diagnostics
     ├── hnn-nle.ipynb               # HNN likelihood estimation with PyMC
+    ├── npe-prior-shift.ipynb       # NPE reuse via prior importance weighting
     ├── data/hnn-evoked.npz         # Offline HNN simulations
     └── helpers/
         ├── hnn.py                 # HNN simulation, data loading, and plotting
@@ -37,6 +38,8 @@ ai4science/
 The [diffusion tutorial](tutorials/diffusion-models.ipynb) infers the height and three angles of a planar robot arm from its endpoint. Several configurations can produce the same endpoint, giving an example of a multimodal posterior. It covers simulation, offline training, posterior sampling, coverage checks, and inference-time guidance. Training time depends on hardware and compilation overhead.
 
 The [HNN NPE tutorial](tutorials/hnn-npe.ipynb) estimates proximal-input timing and pyramidal AMPA weight from simulated cortical dipole waveforms, then checks held-out recovery and calibration with BayesFlow diagnostics. The [HNN NLE tutorial](tutorials/hnn-nle.ipynb) learns a likelihood from the same data and uses BayesFlow's `NeuralDistribution` with PyMC to inspect the posterior against ground truth for one held-out waveform.
+
+The [prior-shift tutorial](tutorials/npe-prior-shift.ipynb) trains an NPE for a noisy pulse, checks recovery and calibration with `bf.diagnostics.recovery` and `bf.diagnostics.calibration_ecdf`, then changes the prior without retraining. It derives and computes prior-density importance weights externally, uses sampling-importance resampling to obtain equally weighted posterior draws, and repeats both diagnostics on simulations from the new prior.
 
 ## What is simulation-based inference?
 
