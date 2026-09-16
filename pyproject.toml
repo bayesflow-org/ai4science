@@ -17,6 +17,10 @@ dependencies = [
     "scipy>=1.18.0"
 ]
 
+[project.optional-dependencies]
+hnn = ["hnn-core[parallel]==0.6.1; sys_platform != 'win32'"]
+nle = ["pymc>=5.24,<6", "arviz>=0.21,<1"]
+
 [dependency-groups]
 dev = ["pytest>=8.3", "ruff>=0.14.13"]
 
