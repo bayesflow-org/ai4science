@@ -25,6 +25,7 @@ ai4science/
 ├── pyproject.toml                 # Dependencies, packaging, and code checks
 ├── uv.lock                        # Resolved dependency versions
 └── tutorials/
+    ├── compositional-diffusion.ipynb # Compose evidence across experiments
     ├── diffusion-models.ipynb      # Diffusion-based posterior inference
     ├── hnn-npe.ipynb               # HNN posterior estimation and diagnostics
     ├── hnn-nle.ipynb               # HNN likelihood estimation with PyMC
@@ -36,6 +37,8 @@ ai4science/
 ```
 
 The [diffusion tutorial](tutorials/diffusion-models.ipynb) infers the height and three angles of a planar robot arm from its endpoint. Several configurations can produce the same endpoint, giving an example of a multimodal posterior. It covers simulation, offline training, posterior sampling, coverage checks, and inference-time guidance. Training time depends on hardware and compilation overhead.
+
+The [compositional diffusion tutorial](tutorials/compositional-diffusion.ipynb) trains on individual FitzHugh--Nagumo voltage traces, then combines repeated stimulation experiments that share one parameter vector. It demonstrates the prior correction in compositional score inference, posterior contraction as experiments accumulate, and a comparison with the exact two-parameter posterior.
 
 The [HNN NPE tutorial](tutorials/hnn-npe.ipynb) estimates proximal-input timing and pyramidal AMPA weight from simulated cortical dipole waveforms, then checks held-out recovery and calibration with BayesFlow diagnostics. The [HNN NLE tutorial](tutorials/hnn-nle.ipynb) learns a likelihood from the same data and uses BayesFlow's `NeuralDistribution` with PyMC to inspect the posterior against ground truth for one held-out waveform.
 
