@@ -26,11 +26,11 @@ ai4science/
 ├── uv.lock                        # Resolved dependency versions
 └── tutorials/
     ├── compositional-diffusion.ipynb # Compose evidence across experiments
-    ├── diffusion-models.ipynb      # Diffusion-based posterior inference
-    ├── hnn-npe.ipynb               # HNN posterior estimation and diagnostics
-    ├── hnn-nle.ipynb               # HNN likelihood estimation with PyMC
-    ├── npe-prior-shift.ipynb       # NPE reuse via prior importance weighting
-    ├── data/hnn-evoked.npz         # Offline HNN simulations
+    ├── diffusion-models.ipynb        # Diffusion-based posterior inference
+    ├── hnn-npe.ipynb                 # HNN posterior estimation and diagnostics
+    ├── hnn-nle.ipynb                 # HNN likelihood estimation with PyMC
+    ├── npe-prior-shift.ipynb         # NPE reuse via prior importance weighting
+    ├── data/hnn-evoked.npz           # Offline HNN simulations
     └── helpers/
         ├── hnn.py                 # HNN simulation, data loading, and plotting
         └── kinematics.py          # Robot-arm simulation and plotting

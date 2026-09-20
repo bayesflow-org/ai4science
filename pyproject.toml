@@ -13,8 +13,9 @@ dependencies = [
     "keras>=3.15.0",
     "matplotlib>=3.11.1",
     "numpy>=2.5.1",
+    "pyabc>=0.13.0",
     "scikit-learn>=1.5",
-    "scipy>=1.18.0"
+    "scipy>=1.18.0",
 ]
 
 [project.optional-dependencies]
