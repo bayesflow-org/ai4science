@@ -30,6 +30,7 @@ ai4science/
     ├── hnn-npe.ipynb                 # HNN posterior estimation and diagnostics
     ├── hnn-nle.ipynb                 # HNN likelihood estimation with PyMC
     ├── npe-prior-shift.ipynb         # NPE reuse via prior importance weighting
+    ├── mmar.ipynb                    # Multifractal asset-return modeling
     ├── data/hnn-evoked.npz           # Offline HNN simulations
     └── helpers/
         ├── hnn.py                 # HNN simulation, data loading, and plotting
@@ -43,6 +44,8 @@ The [compositional diffusion tutorial](tutorials/compositional-diffusion.ipynb) 
 The [HNN NPE tutorial](tutorials/hnn-npe.ipynb) estimates proximal-input timing and pyramidal AMPA weight from simulated cortical dipole waveforms, then checks held-out recovery and calibration with BayesFlow diagnostics. The [HNN NLE tutorial](tutorials/hnn-nle.ipynb) learns a likelihood from the same data and uses BayesFlow's `NeuralDistribution` with PyMC to inspect the posterior against ground truth for one held-out waveform.
 
 The [prior-shift tutorial](tutorials/npe-prior-shift.ipynb) trains an NPE for a noisy pulse, checks recovery and calibration with `bf.diagnostics.recovery` and `bf.diagnostics.calibration_ecdf`, then changes the prior without retraining. It derives and computes prior-density importance weights externally, uses sampling-importance resampling to obtain equally weighted posterior draws, and repeats both diagnostics on simulations from the new prior.
+
+The [MMAR tutorial](tutorials/mmar.ipynb) develops a univariate multifractal model for volatility clustering and heavy-tailed returns, checks its prior predictions, and restores a pretrained neural posterior estimator. It validates recovery and calibration, estimates the posterior for one VOO return window, performs posterior predictive checks, and compares the result with a Gaussian fit.
 
 ## What is simulation-based inference?
 
