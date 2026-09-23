@@ -4,7 +4,7 @@ __pycache__/
 *$py.class
 
 # Solution notebooks
-_*.ipynb 
+_*.ipynb
 
 # C extensions
 *.so
