@@ -29,6 +29,29 @@ def configure_plot_style():
     )
 
 
+def plot_q_turbulence(paths_by_q):
+    """Plot matched return paths across four values of q."""
+    fig, axes = plt.subplots(
+        2,
+        2,
+        figsize=(12, 7),
+        sharex=True,
+        sharey=True,
+        layout="constrained",
+    )
+
+    for ax, (q, paths) in zip(axes.ravel(), paths_by_q.items(), strict=True):
+        for path in paths:
+            ax.plot(path, color=PURPLE, linewidth=1.15, alpha=0.68)
+        ax.axhline(0.0, color=OBSERVED, linewidth=0.8, alpha=0.55)
+        ax.set_title(f"q = {q:.2f}")
+
+    fig.suptitle("How q Changes Simulations", fontsize=18)
+    fig.supxlabel("Trading day")
+    fig.supylabel("Daily return (%)")
+    return fig
+
+
 def _max_drawdown(paths):
     wealth = np.cumprod(1 + np.asarray(paths), axis=-1)
     peaks = np.maximum.accumulate(wealth, axis=-1)

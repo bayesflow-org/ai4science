@@ -11,6 +11,7 @@ from .model import (
     WINDOW,
     posterior_resimulations,
     prior_table,
+    q_scenarios,
     simulate,
     stack_samples,
 )
@@ -19,6 +20,7 @@ from .plotting import (
     plot_gaussian_mmar_comparison,
     plot_posterior_predictive,
     plot_prior_predictive,
+    plot_q_turbulence,
 )
 
 ASSET_DIR = Path(__file__).resolve().parent
@@ -47,8 +49,10 @@ __all__ = [
     "plot_gaussian_mmar_comparison",
     "plot_posterior_predictive",
     "plot_prior_predictive",
+    "plot_q_turbulence",
     "posterior_resimulations",
     "prior_table",
+    "q_scenarios",
     "simulate",
     "stack_samples",
 ]

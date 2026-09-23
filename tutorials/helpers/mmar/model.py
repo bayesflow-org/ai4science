@@ -131,6 +131,18 @@ def simulate(n_simulations, rng=None, prior=PRIOR):
     return _simulate_from_parameters(parameters, rng)
 
 
+def q_scenarios(q_values, n_paths=4, seed=20260906):
+    """Simulate matched paths while varying only the cascade parameter q."""
+    return {
+        float(q): 100
+        * _simulate_from_parameters(
+            np.tile([0.0, 0.015, q, 4.0], (n_paths, 1)),
+            np.random.default_rng(seed),
+        )["returns"]
+        for q in q_values
+    }
+
+
 def posterior_resimulations(posterior, rng=None):
     """Draw fresh return paths for each batch of posterior parameters."""
     if rng is None:
