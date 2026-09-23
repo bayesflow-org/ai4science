@@ -25,19 +25,20 @@ ai4science/
 ├── pyproject.toml                 # Dependencies, packaging, and code checks
 ├── uv.lock                        # Resolved dependency versions
 └── tutorials/
-    ├── compositional-diffusion.ipynb # Compose evidence across experiments
-    ├── diffusion-models.ipynb        # Diffusion-based posterior inference
-    ├── hnn-npe.ipynb                 # HNN posterior estimation and diagnostics
-    ├── hnn-nle.ipynb                 # HNN likelihood estimation with PyMC
-    ├── npe-prior-shift.ipynb         # NPE reuse via prior importance weighting
-    ├── mmar.ipynb                    # Multifractal asset-return modeling
-    ├── data/hnn-evoked.npz           # Offline HNN simulations
+    ├── compositional-diffusion.ipynb  # Compose evidence across experiments
+    ├── first-steps.ipynb              # First steps with diffusion models for SBI
+    ├── hnn-npe.ipynb                  # HNN posterior estimation and diagnostics
+    ├── hnn-nle.ipynb                  # HNN likelihood estimation with PyMC
+    ├── npe-prior-shift.ipynb          # NPE reuse via prior importance weighting
+    ├── mmar.ipynb                     # Multifractal asset-return modeling
+    ├── data/hnn-evoked.npz            # Offline HNN simulations
     └── helpers/
         ├── hnn.py                 # HNN simulation, data loading, and plotting
         └── kinematics.py          # Robot-arm simulation and plotting
+        └── mmar.py                # Multifractal model utilities
 ```
 
-The [diffusion tutorial](tutorials/diffusion-models.ipynb) infers the height and three angles of a planar robot arm from its endpoint. Several configurations can produce the same endpoint, giving an example of a multimodal posterior. It covers simulation, offline training, posterior sampling, coverage checks, and inference-time guidance. Training time depends on hardware and compilation overhead.
+The [diffusion tutorial](tutorials/first-steps.ipynb) infers the height and three angles of a planar robot arm from its endpoint. Several configurations can produce the same endpoint, giving an example of a multimodal posterior. It covers simulation, offline training, posterior sampling, coverage checks, and inference-time guidance. Training time depends on hardware and compilation overhead.
 
 The [compositional diffusion tutorial](tutorials/compositional-diffusion.ipynb) trains on individual FitzHugh--Nagumo voltage traces, then combines repeated stimulation experiments that share one parameter vector. It demonstrates the prior correction in compositional score inference, posterior contraction as experiments accumulate, and a comparison with the exact two-parameter posterior.
 
@@ -70,9 +71,7 @@ The diffusion tutorial uses **NPE**. Its central configuration is:
 ```python
 workflow = bf.BasicWorkflow(
     simulator=simulator,
-    inference_network=bf.networks.DiffusionModel(
-        subnet_kwargs={"widths": (128,) * 3}
-    ),
+    inference_network=bf.networks.DiffusionModel(),
     inference_variables="parameters",
     inference_conditions="observables",
     standardize="all"
